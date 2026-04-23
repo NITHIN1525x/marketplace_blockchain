@@ -60,8 +60,8 @@ class LoginView(APIView):
                 status=status.HTTP_404_NOT_FOUND
             )
 
-        # Authenticate
-        user = authenticate(request, username=user_obj.username, password=password)
+        # Authenticate using email (USERNAME_FIELD for custom User model)
+        user = authenticate(request, username=email, password=password)
         if user is None:
             return Response(
                 {'error': 'Incorrect password.'},

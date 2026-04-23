@@ -12,7 +12,7 @@ from users.models import User
 from jobs.models import Job
 from datetime import date, timedelta
 
-print("🌱 Seeding database...")
+print("Seeding database...")
 
 # ── Create Users ───────────────────────────────────────────────
 
@@ -23,7 +23,7 @@ if not User.objects.filter(email='admin@test.com').exists():
         email='admin@test.com',
         password='admin123',
     )
-    print("✅ Admin created: admin@test.com / admin123")
+    print("DONE Admin created: admin@test.com / admin123")
 
 # Clients
 clients_data = [
@@ -61,7 +61,7 @@ for data in clients_data:
             bio=data['bio'],
         )
         clients.append(user)
-        print(f"✅ Client created: {data['email']} / test1234")
+        print(f"DONE Client created: {data['email']} / test1234")
     else:
         clients.append(User.objects.get(email=data['email']))
 
@@ -113,7 +113,7 @@ for data in freelancers_data:
             skills=data['skills'],
         )
         freelancers.append(user)
-        print(f"✅ Freelancer created: {data['email']} / test1234")
+        print(f"DONE Freelancer created: {data['email']} / test1234")
     else:
         freelancers.append(User.objects.get(email=data['email']))
 
@@ -284,28 +284,28 @@ for data in jobs_data:
     if not Job.objects.filter(title=data['title']).exists():
         job = Job.objects.create(**data)
         created_jobs.append(job)
-        print(f"✅ Job created: {data['title']}")
+        print(f"DONE Job created: {data['title']}")
     else:
         created_jobs.append(Job.objects.get(title=data['title']))
 
 print("\n" + "="*50)
-print("🎉 Database seeded successfully!")
+print("Database seeded successfully!")
 print("="*50)
-print("\n📋 TEST ACCOUNTS:")
-print("\n👑 ADMIN:")
+print("\nTEST ACCOUNTS:")
+print("\nADMIN:")
 print("   Email: admin@test.com")
 print("   Password: admin123")
 print("   Admin Panel: http://127.0.0.1:8000/admin")
-print("\n💼 CLIENTS:")
+print("\nCLIENTS:")
 print("   john@test.com / test1234")
 print("   sarah@test.com / test1234")
 print("   mike@test.com / test1234")
-print("\n🚀 FREELANCERS:")
+print("\nFREELANCERS:")
 print("   alex@test.com / test1234")
 print("   priya@test.com / test1234")
 print("   carlos@test.com / test1234")
 print("   nina@test.com / test1234")
-print(f"\n📊 Jobs created: {len(created_jobs)}")
-print("\n🌐 Frontend: http://localhost:5173")
-print("🔧 Backend: http://127.0.0.1:8000")
+print(f"\nJobs created: {len(created_jobs)}")
+print("\nFrontend: http://localhost:5173")
+print("Backend: http://127.0.0.1:8000")
 print("="*50)
